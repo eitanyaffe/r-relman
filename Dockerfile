@@ -1,4 +1,4 @@
-FROM bioconductor/release_core2:R3.5.0_Bioc3.7
+FROM bioconductor/release_core2:R3.6.1_Bioc3.9
 
 # basic packages
 RUN Rscript -e "install.packages(c('dplyr','Hmisc','phangorn','reshape2','tidyverse', 'R.utils'))"
