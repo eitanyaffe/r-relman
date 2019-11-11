@@ -16,3 +16,7 @@ RUN Rscript -e "library('devtools'); devtools::install_github('benjjneb/dada2', 
 
 # BiocManager packages
 RUN Rscript -e "BiocManager::install(c('DECIPHER','DESeq2','edgeR','msa','phyloseq','ggplot2','gplots', 'cowplot'))"
+
+# DirichletMultinomial
+RUN apt-get -y install gsl-bin libgsl0-dev
+RUN Rscript -e "BiocManager::install('DirichletMultinomial')"
