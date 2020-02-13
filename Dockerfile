@@ -22,3 +22,7 @@ RUN apt-get -y install gsl-bin libgsl0-dev
 RUN Rscript -e "BiocManager::install('DirichletMultinomial')"
 
 RUN Rscript -e "install.packages(c('foreach','doParallel'))"
+
+# more packages due to popular requests
+RUN Rscript -e "devtools::install_github('jakobbossek/ggheatmap')"
+RUN Rscript -e "BiocManager::install(c('wesanderson', 'rstan'))"
