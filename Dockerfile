@@ -8,27 +8,14 @@ RUN apt-get install bzip2
 RUN mkdir /download && cd /download && wget http://ftp.gnu.org/gnu/parallel/parallel-20190722.tar.bz2 && tar xvf parallel-20190722.tar.bz2
 RUN cd /download/parallel-20190722 && ./configure && make && make install
 
-# basic packages
-RUN Rscript -e "install.packages(c('devtools', 'dplyr','Hmisc','phangorn','reshape2','tidyverse', 'R.utils'))"
-
-# dada2 through github
-RUN Rscript -e "library('devtools'); devtools::install_github('benjjneb/dada2', ref='v1.14')"
-
-# BiocManager packages
-RUN Rscript -e "BiocManager::install(c('DECIPHER','DESeq2','edgeR','msa','phyloseq','ggplot2','gplots', 'cowplot'))"
-
-# DirichletMultinomial
+# for DirichletMultinomial
 RUN apt-get -y install gsl-bin libgsl0-dev
-RUN Rscript -e "BiocManager::install('DirichletMultinomial')"
 
-RUN Rscript -e "install.packages(c('foreach','doParallel'))"
+# packages through BiocManager
+RUN Rscript -e "BiocManager::install(c('DECIPHER','DESeq2','edgeR','msa','phyloseq','ggplot2','gplots', 'cowplot', 'DirichletMultinomial', 'wesanderson', 'rstan', 'topicmodels', 'slam'))"
 
-# more packages due to popular requests
+RUN Rscript -e "install.packages(c('devtools', 'dplyr','Hmisc','phangorn','reshape2','tidyverse', 'R.utils', 'foreach','doParallel'))"
+
+# github packages
 RUN Rscript -e "devtools::install_github('jakobbossek/ggheatmap')"
-RUN Rscript -e "BiocManager::install(c('wesanderson', 'rstan'))"
-
-# Jess request, 3/2/2020
 RUN Rscript -e "devtools::install_github('bm2-lab/MetaTopics')"
-RUN Rscript -e "BiocManager::install(c('topicmodels', 'slam'))"
-
-
