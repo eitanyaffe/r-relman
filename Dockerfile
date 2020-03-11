@@ -25,4 +25,7 @@ RUN Rscript -e "install.packages(c('foreach','doParallel'))"
 
 # more packages due to popular requests
 RUN Rscript -e "devtools::install_github('jakobbossek/ggheatmap')"
-RUN Rscript -e "BiocManager::install(c('wesanderson', 'rstan'))"
+# RUN Rscript -e "BiocManager::install(c('wesanderson', 'rstan'))"
+
+RUN Rscript -e "devtools::install_github('bm2-lab/MetaTopics')"
+RUN Rscript -e "BiocManager::install(c('topicmodels', 'slam'))"
