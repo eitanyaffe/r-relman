@@ -9,7 +9,7 @@ RUN mkdir /download && cd /download && wget http://ftp.gnu.org/gnu/parallel/para
 RUN cd /download/parallel-20190722 && ./configure && make && make install
 
 # basic packages
-RUN Rscript -e "install.packages(c('devtools', 'dplyr','Hmisc','phangorn','reshape2','tidyverse', 'R.utils'))"
+RUN Rscript -e "install.packages(c('Rtsne', 'devtools', 'dplyr','Hmisc','phangorn','reshape2','tidyverse', 'R.utils'))"
 
 # dada2 through github
 RUN Rscript -e "library('devtools'); devtools::install_github('benjjneb/dada2', ref='v1.14')"
